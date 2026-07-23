@@ -81,8 +81,7 @@ npm test
 
 The test suite spins up an in-memory MongoDB instance automatically (via
 `mongodb-memory-server`) — no separate database is required to run tests.
-**Note:** the first run downloads a MongoDB binary, so it needs an internet
-connection the first time.
+
 
 ## 3. Advanced features implemented
 
@@ -99,19 +98,13 @@ Bonus, effectively included by the data model: an **audit trail / activity log**
 A common free/low-cost setup:
 
 - **Database:** [MongoDB Atlas](https://www.mongodb.com/atlas) free tier — create a cluster, a database user, and copy the connection string into `MONGO_URI`.
-- **Backend:** [Render](https://render.com) or [Railway](https://railway.app) — deploy `backend/` as a Web Service, set `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (your frontend URL) as environment variables, build command `npm install`, start command `npm start`.
-- **Frontend:** [Vercel](https://vercel.com) or [Netlify](https://netlify.com) — deploy `frontend/`, set `VITE_API_URL` to your deployed backend's `/api` URL, build command `npm run build`, publish directory `dist`.
+- **Backend:** [Render](https://render.com) — deploy `backend/` as a Web Service, set `MONGO_URI`, `JWT_SECRET`, `CLIENT_URL` (your frontend URL) as environment variables, build command `npm install`, start command `npm start`.
+- **Frontend:** [Vercel](https://vercel.com) — deploy `frontend/`, set `VITE_API_URL` to your deployed backend's `/api` URL, build command `npm run build`, publish directory `dist`.
 
 After deploying, run the seed script once against your production database
 (e.g. via the hosting provider's shell, or temporarily by running `npm run
 seed` locally with `MONGO_URI` pointed at Atlas) to create demo accounts.
 
-Uploaded evidence files are stored on the backend's local disk under
-`backend/uploads/`. Most free hosting tiers use ephemeral storage, so for a
-production deployment you may want to switch this to a persistent disk add-on
-or an object storage service (e.g. Cloudinary, AWS S3) — the upload
-middleware (`backend/middleware/upload.js`) is the only place that would need
-to change.
 
 ## 5. API documentation
 
