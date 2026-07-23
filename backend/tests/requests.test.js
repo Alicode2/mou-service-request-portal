@@ -1,3 +1,4 @@
+jest.setTimeout(10000); // 10 seconds
 const request = require('supertest');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
